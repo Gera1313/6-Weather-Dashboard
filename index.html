@@ -10,15 +10,27 @@
 
 <body>
     <header>
-        <h1>
-            Weather Dashboard
-        </h1>
+        <h1>Weather Dashboard</h1>
+            <div class="weather-input"></div>
+        </div>
     </header>
+
     <form>
+        <div class="container"></div>
         <h2>Search For A City:</h2>
-        <button>Search</button>
+        <button class="search-btn">Search</button>
     </form>
-    <h3>5-Day Forecast:</h3>
+
+    <div class="5-day-forecast">
+        <h3>5-Day Forecast:</h3>
+        <ul class="5-day-cards">
+            <li class="card">
+                <h3>temp:</h3>
+                <h3>wind:</h3>
+                <h3>humidity:</h3>
+            </li>
+        </ul>
+    </div>
 
     <script src="./assets/js/script.js"></script>
 </body>
