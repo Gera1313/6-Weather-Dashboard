@@ -5,7 +5,13 @@ var city;
 // API Call
 var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
 
-fetch(queryURL)
+fetch(queryURL) {
+    .then(function (response) {
+        if (response.ok) {
+            return response.json();
+        }
+    })
+}
 
 
 
