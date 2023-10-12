@@ -1,3 +1,5 @@
+const form = document.getElementById('weatherForm');
+
 var APIKey = "1f7ee33dc86217d48db8099bae79dad7";
 
 var city; 
