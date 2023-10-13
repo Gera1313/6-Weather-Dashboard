@@ -18,6 +18,16 @@ fetch(queryURL) {
     })
 }
 
+// Event listener for form
+weatherForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const city = cityInput.value;
+
+    fetchWeatherData(city);
+})
+
+
 
 
 
