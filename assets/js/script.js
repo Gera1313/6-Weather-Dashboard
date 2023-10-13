@@ -24,9 +24,10 @@ weatherForm.addEventListener('submit', (event) => {
 
     const city = cityInput.value;
 
-    fetchWeatherData(city);
+    fetchfiveDayForecast(city);
 })
 
+// function to fetch weather data
 function fetchWeatherData(city) {
     const queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey';
 
@@ -42,7 +43,21 @@ function fetchWeatherData(city) {
     });
 }
 
+// function to update content on page
+function updateWeatherContent(data) {
+    const cityName = data.name;
+    const temperature = data.main.temp;
+    const windSpeed = data.wind.speed;
+    const humidity = data.main.humidity;
 
+    currentWeatherDetails.innerHTML = `
+    <h2>${cityName}</h2>
+    <h5>Temperature: ${temperature}°C</h5>
+    <h5>Wind: ${windSpeed} m/s</h5>
+    <h5>Humidity: ${humidity}%</h5>`;
+}
+
+fetchFiveDayForecast('Tokyo');
 
 
 
