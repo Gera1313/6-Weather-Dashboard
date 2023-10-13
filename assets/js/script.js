@@ -3,9 +3,9 @@ const cityInput = document.querySelector('.city-input');
 const currentWeather = document.querySelector('.current-weather .details');
 const fiveDayForecast = document.querySelector('.five-day-cards');
 
-// var APIKey = "1f7ee33dc86217d48db8099bae79dad7";
+const APIKey = "1f7ee33dc86217d48db8099bae79dad7";
 
-// var city; 
+// const city; 
 
 // API Call
 // var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + APIKey;
@@ -27,7 +27,20 @@ weatherForm.addEventListener('submit', (event) => {
     fetchWeatherData(city);
 })
 
-function 
+function fetchWeatherData(city) {
+    const queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey';
+
+    fetch(queryURL)
+    .then(function (response) {
+        return response.json(); 
+    })
+    .then(function (data) {
+        updateWeatherContent(data);
+    })
+    .catch(function (error) {
+        console.error(error); 
+    });
+}
 
 
 
