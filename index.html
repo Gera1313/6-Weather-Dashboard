@@ -1,72 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Weather Dashboard</title>
 </head>
-
-<!-- Header -->
 <body>
     <header>
         <h1>Weather Dashboard</h1>
     </header>
 
-<!-- search button and input -->
-    <form id="weatherForm">
-        <div class="container"></div>
-        <div class="input">
-            <h2>Search For A City:</h2>
-            <input class="city-input" type="text" placeholder="Tokyo">
-            <button class="search-btn">Search</button>
-        </div>
-    </form>
+    <main>
+        <form id="weatherForm">
+            <div class="container">
+                <div class="input">
+                    <h2>Search For A City:</h2>
+                    <input class="city-input" type="text" placeholder="Tokyo">
+                    <button class="search-btn">Search</button>
+                </div>
+            </div>
+        </form>
 
-<!-- Currenet Weather -->
-    <div class="current-weather">
-        <div class="details">
-          <h2>City (date)</h2>
-          <h5>Temperature:</h5>
-          <h5>Wind:</h5>
-          <h5>Humidity</h5>
-        </div>
-      </div>
+        <!-- Current Weather -->
+        <section class="current-weather">
+            <div class="details">
+                <h2>City (date)</h2>
+                <h5>Temperature:</h5>
+                <h5>Wind:</h5>
+                <h5>Humidity:</h5>
+            </div>
+        </section>
 
-<!-- 5-Day Forecast -->
-    <div class="5-day-forecast">
-        <h3>5-Day Forecast:</h3>
-        <ul class="5-day-cards">
-            <li class="card">
-                <h3>temp:</h3>
-                <h3>wind:</h3>
-                <h3>humidity:</h3>
-            </li>
-            <li class="card">
-                <h3>temp:</h3>
-                <h3>wind:</h3>
-                <h3>humidity:</h3>
-            </li>
-            <li class="card">
-                <h3>temp:</h3>
-                <h3>wind:</h3>
-                <h3>humidity:</h3>
-            </li>
-            <li class="card">
-                <h3>temp:</h3>
-                <h3>wind:</h3>
-                <h3>humidity:</h3>
-            </li>
-            <li class="card">
-                <h3>temp:</h3>
-                <h3>wind:</h3>
-                <h3>humidity:</h3>
-            </li>
-        </ul>
-    </div>
+        <!-- 5-Day Forecast -->
+        <section class="five-day-forecast">
+            <h3>5-Day Forecast:</h3>
+            <ul class="five-day-cards">
+                <li class="card">
+                    <h3>temp:</h3>
+                    <h3>wind:</h3>
+                    <h3>humidity:</h3>
+                </li>
+                <li class="card">
+                    <h3>temp:</h3>
+                    <h3>wind:</h3>
+                    <h3>humidity:</h3>
+                </li>
+                <li class="card">
+                    <h3>temp:</h3>
+                    <h3>wind:</h3>
+                    <h3>humidity:</h3>
+                </li>
+                <li class="card">
+                    <h3>temp:</h3>
+                    <h3>wind:</h3>
+                    <h3>humidity:</h3>
+                </li>
+                <li class="card">
+                    <h3>temp:</h3>
+                    <h3>wind:</h3>
+                    <h3>humidity:</h3>
+                </li>
+            </ul>
+        </section>
+    </main>
 
     <script src="./assets/js/script.js"></script>
 </body>
-
 </html>
