@@ -30,7 +30,7 @@ function fetchWeatherData(city) {
     });
 }
 
-// function to update content on page
+// function to update content on page for current weather
 function updateWeatherContent(data) {
     const cityName = data.name;
     const temperature = data.main.temp;
@@ -46,7 +46,18 @@ function updateWeatherContent(data) {
 
 // Function to fetch 5-day forecast data
 function fetchFiveDayForecast(city) {
-    
+    const queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey;
+
+    fetch(queryURL)
+    .then(function (response) {
+        return response.json();
+    })
+    .then(function (data) {
+        displayFiveDayForecast(data); 
+    })
+    .catch(function (error) {
+        console.log(error); 
+    });
 }
 
 fetchFiveDayForecast('Tokyo');
