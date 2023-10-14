@@ -11,12 +11,12 @@ weatherForm.addEventListener('submit', (event) => {
 
     const city = cityInput.value;
 
-    fetchfiveDayForecast(city);
+    fetchWeatherData(city);
 })
 
 // function to fetch weather data
 function fetchWeatherData(city) {
-    const queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey';
+    const queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey;
 
     fetch(queryURL)
     .then(function (response) {
@@ -42,6 +42,11 @@ function updateWeatherContent(data) {
     <h5>Temperature: ${temperature}°C</h5>
     <h5>Wind: ${windSpeed} m/s</h5>
     <h5>Humidity: ${humidity}%</h5>`;
+}
+
+// Function to fetch 5-day forecast data
+function fetchFiveDayForecast(city) {
+    
 }
 
 fetchFiveDayForecast('Tokyo');
