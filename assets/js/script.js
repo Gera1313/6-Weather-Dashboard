@@ -1,7 +1,7 @@
 const form = document.getElementById('weatherForm');
 const cityInput = document.querySelector('.city-input');
 const currentWeatherDetails = document.querySelector('.current-weather .details');
-const fiveDayForecast = document.querySelector('.five-day-cards');
+const fiveDayForecast = document.querySelector('.fiveDayForecast');
 
 const APIKey = "1f7ee33dc86217d48db8099bae79dad7";
 
@@ -12,6 +12,7 @@ form.addEventListener('submit', (event) => {
     const city = cityInput.value;
 
     fetchWeatherContent(city);
+    fetchFiveDayForecast(city); // added this
 })
 
 // function to fetch weather data
@@ -52,7 +53,7 @@ function kelvinToFahrenheit(kelvin) {
 
 // Function to fetch 5-day forecast data
 function fetchFiveDayForecast(city) {
-    const queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey;
+    const queryURL = `http://api.openweathermap.org/geo/1.0/direct?q=` + city + '&appid=' + APIKey;
 
     fetch(queryURL)
     .then(function (response) {
@@ -72,9 +73,10 @@ function displayFiveDayForecast(data) {
 
     fiveDayForecast.innerHTML = '';
 
-    for (let i = 0; i < forecastList.length; i ++) {
+    for (let i = 0; i < forecastList.length; i += 8) { // or i +=8 ?
         const forecast = forecastList[i];
 
+        const date = new Date(forecast.dt * 1000); // not sure if this
         const temperature = forecast.main.temp;
         const windSpeed = forecast.wind.speed;
         const humidity = forecast.main.humidity;
