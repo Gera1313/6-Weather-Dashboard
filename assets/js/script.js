@@ -73,7 +73,7 @@ function displayFiveDayForecast(data) {
 
     fiveDayForecast.innerHTML = '';
 
-    for (let i = 0; i < forecastList.length; i ++) { // or i +=8 ?
+    for (let i = 0; i < forecastList.length; i +=8) {
         const forecast = forecastList[i];
 
         const temperatureKelvin = forecast.main.temp;
