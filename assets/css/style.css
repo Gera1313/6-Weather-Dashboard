@@ -10,3 +10,7 @@ header {
     background-image: linear-gradient(to right, #c1b4ae, #92160c);
 }
 
+.fiveDayForecast {
+    display: none;
+}
+

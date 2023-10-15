@@ -11,9 +11,17 @@ form.addEventListener('submit', (event) => {
 
     const city = cityInput.value;
 
+    // Makes the 5-Day forecast section visible
+    fiveDayForecast.style.display = 'block';
+
     fetchWeatherContent(city);
     fetchFiveDayForecast(city); // added this
 })
+
+// Formula to convert from Kelvin to Fahrenheit
+function kelvinToFahrenheit(kelvin) {
+    return ((kelvin - 273.15) * 9/5 + 32).toFixed(2);
+}
 
 // function to fetch weather data
 function fetchWeatherContent(city) {
@@ -38,11 +46,6 @@ function updateWeatherData(data) {
     const temperatureFahrenheit = kelvinToFahrenheit(temperatureKelvin);
     const windSpeed = data.wind.speed;
     const humidity = data.main.humidity;
-
-    // Formula to convert from Kelvin to Fahrenheit
-function kelvinToFahrenheit(kelvin) {
-    return ((kelvin - 273.15) * 9/5 + 32).toFixed(2);
-}
 
     currentWeatherDetails.innerHTML = `
     <h2>${cityName}</h2>
@@ -98,8 +101,6 @@ function displayFiveDayForecast(data) {
 }
 
 fetchFiveDayForecast('Tokyo');
-
-
 
 
 // Guidance: https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
