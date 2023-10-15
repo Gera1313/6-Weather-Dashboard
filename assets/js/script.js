@@ -53,7 +53,7 @@ function kelvinToFahrenheit(kelvin) {
 
 // Function to fetch 5-day forecast data
 function fetchFiveDayForecast(city) {
-    const queryURL = `http://api.openweathermap.org/geo/1.0/direct?q=` + city + '&appid=' + APIKey;
+    const queryURL = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIKey;
 
     fetch(queryURL)
     .then(function (response) {
