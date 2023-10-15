@@ -33,13 +33,19 @@ function fetchWeatherContent(city) {
 // function to update content on page for current weather
 function updateWeatherData(data) {
     const cityName = data.name;
-    const temperature = data.main.temp;
+    const temperatureKelvin = data.main.temp;
+    const temperatureFahrenheit = kelvinToFahrenheit(temperatureKelvin);
     const windSpeed = data.wind.speed;
     const humidity = data.main.humidity;
 
+    // Formula to convert from Kelvin to Fahrenheit
+function kelvinToFahrenheit(kelvin) {
+    return ((kelvin - 273.15) * 9/5 + 32).toFixed(2);
+}
+
     currentWeatherDetails.innerHTML = `
     <h2>${cityName}</h2>
-    <h5>Temperature: ${temperature}°C</h5>
+    <h5>Temperature: ${temperatureFahrenheit}°F</h5>
     <h5>Wind: ${windSpeed} m/s</h5>
     <h5>Humidity: ${humidity}%</h5>`;
 }
