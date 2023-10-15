@@ -1,21 +1,21 @@
 const form = document.getElementById('weatherForm');
 const cityInput = document.querySelector('.city-input');
-const currentWeather = document.querySelector('.current-weather .details');
+const currentWeatherDetails = document.querySelector('.current-weather .details');
 const fiveDayForecast = document.querySelector('.five-day-cards');
 
 const APIKey = "1f7ee33dc86217d48db8099bae79dad7";
 
 // Event listener for form
-weatherForm.addEventListener('submit', (event) => {
+form.addEventListener('submit', (event) => {
     event.preventDefault();
 
     const city = cityInput.value;
 
-    fetchWeatherData(city);
+    fetchWeatherContent(city);
 })
 
 // function to fetch weather data
-function fetchWeatherData(city) {
+function fetchWeatherContent(city) {
     const queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey;
 
     fetch(queryURL)
@@ -23,7 +23,7 @@ function fetchWeatherData(city) {
         return response.json(); 
     })
     .then(function (data) {
-        updateWeatherContent(data);
+        updateWeatherData(data);
     })
     .catch(function (error) {
         console.error(error); 
@@ -31,7 +31,7 @@ function fetchWeatherData(city) {
 }
 
 // function to update content on page for current weather
-function updateWeatherContent(data) {
+function updateWeatherData(data) {
     const cityName = data.name;
     const temperature = data.main.temp;
     const windSpeed = data.wind.speed;
