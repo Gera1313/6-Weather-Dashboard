@@ -60,6 +60,30 @@ function fetchFiveDayForecast(city) {
     });
 }
 
+// function to update content on page for 5-day forecast
+function displayFiveDayForecast(data) {
+    const forecastList = data.list;
+
+    fiveDayForecast.innerHTML = '';
+
+    for (let i = 0; i < forecastList.length; i ++) {
+        const forecast = forecastList[i];
+
+        const temperature = forecast.main.temp;
+        const windSpeed = forecast.wind.speed;
+        const humidity = forecast.main.humidity;
+
+        const card = document.createElement('li');
+        card.classList.add('card');
+        card.innerHTML = `
+        <h5>Temperature: ${temperature}°C</h5>
+        <h5>Wind: ${windSpeed} m/s</h5>
+        <h5>Humidity: ${humidity}%</h5>`;
+
+        fiveDayForecast.appendChild(card); 
+    }
+}
+
 fetchFiveDayForecast('Tokyo');
 
 
