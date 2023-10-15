@@ -73,18 +73,23 @@ function displayFiveDayForecast(data) {
 
     fiveDayForecast.innerHTML = '';
 
-    for (let i = 0; i < forecastList.length; i += 8) { // or i +=8 ?
+    for (let i = 0; i < forecastList.length; i ++) { // or i +=8 ?
         const forecast = forecastList[i];
 
-        const date = new Date(forecast.dt * 1000); // not sure if this
-        const temperature = forecast.main.temp;
+        const temperatureKelvin = forecast.main.temp;
         const windSpeed = forecast.wind.speed;
         const humidity = forecast.main.humidity;
+
+        const temperatureFahrenheit = convertKelvinToFahrenheit(temperatureKelvin);
+
+        function convertKelvinToFahrenheit(kelvin) {
+            return ((kelvin - 273.15) * 9/5 + 32).toFixed(2); 
+        }
 
         const card = document.createElement('li');
         card.classList.add('card');
         card.innerHTML = `
-        <h5>Temperature: ${temperature}°C</h5>
+        <h5>Temperature: ${temperatureFahrenheit}°F</h5>
         <h5>Wind: ${windSpeed} m/s</h5>
         <h5>Humidity: ${humidity}%</h5>`;
 
