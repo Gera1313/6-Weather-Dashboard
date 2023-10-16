@@ -76,6 +76,10 @@ function displayFiveDayForecast(data) {
 
     fiveDayForecast.innerHTML = '';
 
+    function convertKelvinToFahrenheit(kelvin) {
+        return ((kelvin - 273.15) * 9/5 + 32).toFixed(2); 
+    }
+
     for (let i = 0; i < forecastList.length; i +=8) {
         const forecast = forecastList[i];
 
@@ -84,10 +88,6 @@ function displayFiveDayForecast(data) {
         const humidity = forecast.main.humidity;
 
         const temperatureFahrenheit = convertKelvinToFahrenheit(temperatureKelvin);
-
-        function convertKelvinToFahrenheit(kelvin) {
-            return ((kelvin - 273.15) * 9/5 + 32).toFixed(2); 
-        }
 
         const card = document.createElement('li');
         card.classList.add('card');
