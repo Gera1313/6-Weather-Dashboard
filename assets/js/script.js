@@ -102,5 +102,12 @@ function displayFiveDayForecast(data) {
 
 fetchFiveDayForecast('Tokyo');
 
+// Function to fetch current weather and 5-day forecast
+function fetchWeatherAndForecast(city) {
+    fetchWeatherContent(city);
+    fetchFiveDayForecast(city);
+}
+
+  
 
 // Guidance: https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
