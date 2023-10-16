@@ -108,6 +108,34 @@ function fetchWeatherAndForecast(city) {
     fetchFiveDayForecast(city);
 }
 
+// Function to display the search history
+function displaySearchHistory(history) {
+    const searchHistoryList = document.getElementById('searchHistoryList');
+    searchHistoryList.innerHTML = '';
+
+    // Creates list items for each city in the search history
+    history.forEach((city) => {
+        const listItem = document.createElement('li'); 
+        listItem.textContent = city; 
+        listItem.addEventListener('click', () => {
+            // Perform new search for that city when past search clicked. 
+            fetchWeatherAndForecast(city);
+        });
+        searchHistoryList.appendChild(listItem);
+        });
+}
+
+// Function to save a city to the search history
+function addToSearchHistory(city) {
+    const searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+
+    searchHistory.push(city);
+
+    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+
+    displaySearchHistory(searchHistory);
+}
+
   
 
 // Guidance: https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
