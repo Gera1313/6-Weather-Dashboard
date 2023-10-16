@@ -95,7 +95,7 @@ function displayFiveDayForecast(data) {
         return ((kelvin - 273.15) * 9/5 + 32).toFixed(2); 
     }
 
-    for (let i = 0; i < forecastList.length; i +=8) {
+    for (let i = 0; i < forecastList.length; i +=8) { 
         const forecast = forecastList[i];
 
         // Timestamps 102-106
@@ -181,3 +181,5 @@ form.addEventListener('submit', (event) => {
   
 
 // Guidance: https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
+
+// Few issues to fix: 1. The displayed dates. The current date is repeated in the first day of the 5-day weather forecast and it shouldn't because it shows tomorrow's weather info. The date should display the next day after the current date. 2. Need to add weather icons as well. 3. Need to syle it using CSS. 
