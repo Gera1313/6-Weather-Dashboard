@@ -23,7 +23,22 @@ function kelvinToFahrenheit(kelvin) {
     return ((kelvin - 273.15) * 9/5 + 32).toFixed(2);
 }
 
-// function to fetch weather data
+// Function to display the current date
+function displayCurrentDate() {
+    const currentDateElement = document.getElementById('currentDate');
+    const currentDate = new Date();
+  
+    // Format the date (you can adjust the format as needed)
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const formattedDate = currentDate.toLocaleDateString(undefined, options);
+  
+    currentDateElement.textContent = formattedDate;
+  }
+  
+  // Call the function to display the current date
+  displayCurrentDate();
+
+// function to fetch current weather data
 function fetchWeatherContent(city) {
     const queryURL = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey;
 
@@ -82,6 +97,13 @@ function displayFiveDayForecast(data) {
 
     for (let i = 0; i < forecastList.length; i +=8) {
         const forecast = forecastList[i];
+
+        // Timestamps
+        const dateTimestamp = forecast.dt * 1000;
+        const forecastDate = new Date(dateTimestamp);
+
+        const options = { weekday: 'short', month: 'short', day: 'numeric' };
+        const formattedDate = forecastDate.toLocaleDateString(undefined, options);
 
         const temperatureKelvin = forecast.main.temp;
         const windSpeed = forecast.wind.speed;
