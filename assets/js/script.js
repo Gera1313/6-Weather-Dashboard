@@ -98,7 +98,7 @@ function displayFiveDayForecast(data) {
     for (let i = 0; i < forecastList.length; i +=8) {
         const forecast = forecastList[i];
 
-        // Timestamps
+        // Timestamps 102-106
         const dateTimestamp = forecast.dt * 1000;
         const forecastDate = new Date(dateTimestamp);
 
@@ -114,9 +114,10 @@ function displayFiveDayForecast(data) {
         const card = document.createElement('li');
         card.classList.add('card');
         card.innerHTML = `
-        <h5>Temperature: ${temperatureFahrenheit}°F</h5>
-        <h5>Wind: ${windSpeed} m/s</h5>
-        <h5>Humidity: ${humidity}%</h5>`;
+        <p>Date: ${formattedDate}</p>
+        <p>Temperature: ${temperatureFahrenheit}°F</p>
+        <p>Wind: ${windSpeed} m/s</p>
+        <p>Humidity: ${humidity}%</p>`;
 
         fiveDayForecast.appendChild(card); 
     }
