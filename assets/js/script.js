@@ -136,6 +136,15 @@ function addToSearchHistory(city) {
     displaySearchHistory(searchHistory);
 }
 
+// event listener to save the search to the history
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const city = cityInput.value;
+    fiveDayForecast.style.display = 'block';
+    fetchWeatherAndForecast(city);
+    addToSearchHistory(city);
+});
+
   
 
 // Guidance: https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
