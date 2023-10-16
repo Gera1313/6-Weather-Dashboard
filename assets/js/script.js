@@ -129,14 +129,17 @@ function displaySearchHistory(history) {
 
 // Function to save a city to the search history
 function addToSearchHistory(city) {
-    const searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+    let searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+
+    // If 'searchHistory' is null in local storage, initialize it as an array. This should get rid of the null error if it works. 
+    if (!searchHistory) {
+        searchHistory = [];
+      }
 
     // Check here if city is already on list
     if (!searchHistory.includes(city)) {
         searchHistory.push(city);
     }
-
-    // searchHistory.push(city);
 
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
 
