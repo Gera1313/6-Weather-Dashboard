@@ -102,6 +102,8 @@ function displayFiveDayForecast(data) {
 
 fetchFiveDayForecast('Tokyo');
 
+// Search history starts here, using arrow functions here for added practice:
+
 // Function to fetch current weather and 5-day forecast
 function fetchWeatherAndForecast(city) {
     fetchWeatherContent(city);
@@ -129,7 +131,12 @@ function displaySearchHistory(history) {
 function addToSearchHistory(city) {
     const searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
 
-    searchHistory.push(city);
+    // Check here if city is already on list
+    if (!searchHistory.includes(city)) {
+        searchHistory.push(city);
+    }
+
+    // searchHistory.push(city);
 
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
 
