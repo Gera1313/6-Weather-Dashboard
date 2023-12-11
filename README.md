@@ -71,4 +71,4 @@ Would like to thank my classmates who have done this challenge already AND my wo
 
 ## License
 
-MIT
+## [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
