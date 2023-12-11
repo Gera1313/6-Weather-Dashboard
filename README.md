@@ -55,7 +55,7 @@ UPDATE 12/11/23: Embarking on the journey to address code issues, meticulously r
 
 URL to the deployed site: 
 
-Weather Dashboard: (https://gera1313.github.io/weather-dashboard/)
+[Weather Dashboard](https://gera1313.github.io/weather-dashboard/)
 
 For more information on how to work with the OpenWeather API, refer to the [Full-Stack Blog on how to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys).
 
