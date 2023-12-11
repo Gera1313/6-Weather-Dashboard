@@ -65,8 +65,6 @@ The following sources helped me in developing this project:
 
 [How to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys) 
 
-Big help thanks to the Module 6 activities
-
 Would like to thank my classmates who have done this challenge already AND my work colleagues who are sofware engineers for the guidance. 
 
 ## License
