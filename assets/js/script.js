@@ -5,6 +5,19 @@ const fiveDayForecast = document.querySelector('.fiveDayForecast');
 
 const APIKey = "1f7ee33dc86217d48db8099bae79dad7";
 
+// Function to get Weather Icons class based on condition code
+function getWeatherIconClass(conditionCode) {
+    switch (conditionCode) {
+        case '01d':
+            return 'wi wi-day-sunny';
+        case '02d':
+            return 'wi wi-day-cloudy';
+            // will add more for the rest of the weather
+        default:
+            return 'wi wi-day-sunny';
+    }
+}
+
 // Event listener for form
 form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -111,13 +124,16 @@ function displayFiveDayForecast(data) {
 
         const temperatureFahrenheit = convertKelvinToFahrenheit(temperatureKelvin);
 
+        const iconClass = getWeatherIconClass(forecast.weather[0].icon);
+
         const card = document.createElement('li');
         card.classList.add('card');
         card.innerHTML = `
         <p>Date: ${formattedDate}</p>
         <p>Temperature: ${temperatureFahrenheit}°F</p>
         <p>Wind: ${windSpeed} m/s</p>
-        <p>Humidity: ${humidity}%</p>`;
+        <p>Humidity: ${humidity}%</p>
+        <i class="${iconClass}"></i>`;
 
         fiveDayForecast.appendChild(card); 
     }
@@ -182,4 +198,7 @@ form.addEventListener('submit', (event) => {
 
 // Guidance: https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
 
-// Few issues to fix: 1. The displayed dates. The current date is repeated in the first day of the 5-day weather forecast and it shouldn't because it shows tomorrow's weather info. The date should display the next day after the current date. 2. Need to add weather icons as well. 3. Need to syle it using CSS. 
+// Few issues to fix: 
+// 1. The displayed dates. The current date is repeated in the first day of the 5-day weather forecast and it shouldn't because it shows tomorrow's weather info. The date should display the next day after the current date. 
+// 2. Need to add weather icons as well. 
+// 3. Need to syle it using CSS. 
