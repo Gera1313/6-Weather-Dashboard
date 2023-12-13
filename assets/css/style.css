@@ -10,6 +10,23 @@ header {
     background-image: linear-gradient(to right, #c1b4ae, #92160c);
 }
 
+/* Styling the 5-Day Cards */
+
+.five-day-cards {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+}
+
+.card {
+    flex: 0 0 calc(20% -10px);
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
 /* Common styles for the weather icons */
 
 .wi {
