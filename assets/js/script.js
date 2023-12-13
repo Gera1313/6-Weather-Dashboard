@@ -130,6 +130,7 @@ function displayFiveDayForecast(data) {
         card.classList.add('card');
         card.innerHTML = `
         <p>Date: ${formattedDate}</p>
+        <i class="${iconClass}"></i>
         <p>Temperature: ${temperatureFahrenheit}°F</p>
         <p>Wind: ${windSpeed} m/s</p>
         <p>Humidity: ${humidity}%</p>
