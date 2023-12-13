@@ -10,22 +10,6 @@ header {
     background-image: linear-gradient(to right, #c1b4ae, #92160c);
 }
 
-
-.fiveDayForecast {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    /* overflow-x: auto; */
-}
-
-.card {
-    flex: 0 0 calc(20% - 10px);
-    border: 1px solid #ccc;
-    padding: 5px;
-    margin: 10px;
-    text-align:left;
-}
-
 /* Common styles for the weather icons */
 
 .wi {
