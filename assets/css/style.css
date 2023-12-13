@@ -12,11 +12,16 @@ header {
 
 /* Styling the 5-Day Cards */
 
-.five-day-cards {
+.fiveDayForecast {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    overflow-x: auto;
+}
+
+.five-day-cards {
     list-style: none;
     padding: 0;
+    display: flex;
 }
 
 .card {
