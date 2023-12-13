@@ -151,12 +151,15 @@ function fetchWeatherAndForecast(city) {
 }
 
 // Function to display the search history
-function displaySearchHistory(history) {
+function displaySearchHistory() {
     const searchHistoryList = document.getElementById('searchHistoryList');
     searchHistoryList.innerHTML = '';
 
+    // Retrieves search history from local storage
+    const searchHistory = JSON.parse(localStorage.getItem('searchHistory')) || [];
+
     // Creates list items for each city in the search history
-    history.forEach((city) => {
+    searchHistory.forEach((city) => {
         const listItem = document.createElement('li'); 
         listItem.textContent = city; 
         listItem.addEventListener('click', () => {
@@ -166,6 +169,9 @@ function displaySearchHistory(history) {
         searchHistoryList.appendChild(listItem);
         });
 }
+
+// call function to display search history on page load
+displaySearchHistory();
 
 // Function to save a city to the search history
 function addToSearchHistory(city) {
