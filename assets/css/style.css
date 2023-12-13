@@ -11,16 +11,18 @@ header {
 }
 
 .fiveDayForecast {
-    display: none;
+    display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    /* overflow-x: auto; */
 }
 
 .card {
+    flex: 0 0 calc(20% - 10px);
     border: 1px solid #ccc;
-    padding: 10px;
-    margin: 5px;
-    text-align: center;
+    padding: 5px;
+    margin: 10px;
+    text-align:left;
 }
 
 /* Common styles for the weather icons */
