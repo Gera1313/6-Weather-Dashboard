@@ -9,33 +9,34 @@
 <body>
     <header>
         <h1>Weather Dashboard</h1>
+        <h2 id="currentDate"></h2>
     </header>
 
+    <!-- Search For A City search box -->
     <main>
-        <form id="weatherForm">
-            <div class="container">
+        <form id="weatherForm" class="container">
                 <div class="input">
                     <h2>Search For A City:</h2>
+                    
                     <input class="city-input" type="text" placeholder="Tokyo">
                     <button class="search-btn">Search</button>
                 </div>
-            </div>
         </form>
+
+        <!-- Search History -->
+        <section id="searchHistory">
+            <h3>Search History:</h3>
+            <ul id="searchHistoryList"></ul>
+        </section>
 
         <!-- Current Weather -->
         <section class="current-weather">
-            <span id="currentDate"></span>
             <div class="details">
                 <h2>City</h2>
                 <h5>Temperature:</h5>
                 <h5>Wind:</h5>
                 <h5>Humidity:</h5>
             </div>
-        </section>
-
-        <section id="searchHistory">
-            <h3>Search History:</h3>
-            <ul id="searchHistoryList"></ul>
         </section>
           
         <!-- 5-Day Forecast -->
