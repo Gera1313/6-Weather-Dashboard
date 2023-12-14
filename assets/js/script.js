@@ -212,7 +212,7 @@ form.addEventListener('submit', (event) => {
         fetchWeatherAndForecast(city);
         addToSearchHistory(city);
         fetchFiveDayForecast(city);
-    }
+    } 
 });
 
   
