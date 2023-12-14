@@ -111,35 +111,41 @@ function displayFiveDayForecast(data) {
     const cardsContainer = document.createElement('ul');
     cardsContainer.classList.add('five-day-cards');
 
-    for (let i = 0; i < forecastList.length; i +=8) { 
-        const forecast = forecastList[i];
-
-        // Timestamps 102-106
-        const dateTimestamp = forecast.dt * 1000;
-        const forecastDate = new Date(dateTimestamp);
-
-        const options = { weekday: 'short', month: 'short', day: 'numeric' };
-        const formattedDate = forecastDate.toLocaleDateString(undefined, options);
-
-        const temperatureKelvin = forecast.main.temp;
-        const windSpeed = forecast.wind.speed;
-        const humidity = forecast.main.humidity;
-
-        const temperatureFahrenheit = convertKelvinToFahrenheit(temperatureKelvin);
-
-        const iconClass = getWeatherIconClass(forecast.weather[0].icon);
-
-        const card = document.createElement('li');
-        card.classList.add('card');
-        card.innerHTML = `
-        <p>Date: ${formattedDate}</p>
-        <i class="${iconClass}"></i>
-        <p>Temperature: ${temperatureFahrenheit}°F</p>
-        <p>Wind: ${windSpeed} m/s</p>
-        <p>Humidity: ${humidity}%</p>
-        <i class="${iconClass}"></i>`;
-
-        cardsContainer.appendChild(card);
+    if (forecastList && forecastList.length > 0) {
+        for (let i = 0; i < forecastList.length; i +=8) { 
+            const forecast = forecastList[i];
+    
+            // Timestamps 102-106
+            const dateTimestamp = forecast.dt * 1000;
+            const forecastDate = new Date(dateTimestamp);
+    
+            const options = { weekday: 'short', month: 'short', day: 'numeric' };
+            const formattedDate = forecastDate.toLocaleDateString(undefined, options);
+    
+            const temperatureKelvin = forecast.main.temp;
+            const windSpeed = forecast.wind.speed;
+            const humidity = forecast.main.humidity;
+    
+            const temperatureFahrenheit = convertKelvinToFahrenheit(temperatureKelvin);
+    
+            const iconClass = getWeatherIconClass(forecast.weather[0].icon);
+    
+            const card = document.createElement('li');
+            card.classList.add('card');
+            card.innerHTML = `
+            <p>Date: ${formattedDate}</p>
+            <i class="${iconClass}"></i>
+            <p>Temperature: ${temperatureFahrenheit}°F</p>
+            <p>Wind: ${windSpeed} m/s</p>
+            <p>Humidity: ${humidity}%</p>
+            <i class="${iconClass}"></i>`;
+    
+            cardsContainer.appendChild(card);
+    }
+    } else {
+        const noDataMessage = document.createElement('p');
+        noDataMessage.textContent = 'No forecast data available';
+        fiveDayForecast.appendChild(noDataMessage);
     }
 
     fiveDayForecast.appendChild(cardsContainer);
@@ -200,8 +206,6 @@ function addToSearchHistory(city) {
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     const city = cityInput.value;
-
-    console.log(city);
 
     if (city) {
         fiveDayForecast.style.display = 'block';
