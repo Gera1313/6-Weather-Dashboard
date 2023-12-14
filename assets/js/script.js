@@ -108,6 +108,9 @@ function displayFiveDayForecast(data) {
         return ((kelvin - 273.15) * 9/5 + 32).toFixed(2); 
     }
 
+    const cardsContainer = document.createElement('ul');
+    cardsContainer.classList.add('five-day-cards');
+
     for (let i = 0; i < forecastList.length; i +=8) { 
         const forecast = forecastList[i];
 
@@ -136,14 +139,15 @@ function displayFiveDayForecast(data) {
         <p>Humidity: ${humidity}%</p>
         <i class="${iconClass}"></i>`;
 
-        fiveDayForecast.appendChild(card); 
+        cardsContainer.appendChild(card);
     }
+
+    fiveDayForecast.appendChild(cardsContainer);
 }
 
-fetchFiveDayForecast();
+// fetchFiveDayForecast();
 
 // Search history starts here
-
 // Function to fetch current weather and 5-day forecast
 function fetchWeatherAndForecast(city) {
     fetchWeatherContent(city);
@@ -196,12 +200,16 @@ function addToSearchHistory(city) {
 form.addEventListener('submit', (event) => {
     event.preventDefault();
     const city = cityInput.value;
-    fiveDayForecast.style.display = 'block';
-    fetchWeatherAndForecast(city);
-    addToSearchHistory(city);
-});
 
-fetchFiveDayForecast();
+    console.log(city);
+
+    if (city) {
+        fiveDayForecast.style.display = 'block';
+        fetchWeatherAndForecast(city);
+        addToSearchHistory(city);
+        fetchFiveDayForecast(city);
+    }
+});
 
   
 
