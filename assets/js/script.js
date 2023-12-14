@@ -201,6 +201,8 @@ form.addEventListener('submit', (event) => {
     addToSearchHistory(city);
 });
 
+fetchFiveDayForecast();
+
   
 
 // Guidance: https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
