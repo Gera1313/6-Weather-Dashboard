@@ -140,9 +140,9 @@ function displayFiveDayForecast(data) {
     }
 }
 
-fetchFiveDayForecast('Tokyo');
+fetchFiveDayForecast();
 
-// Search history starts here, using arrow functions here for added practice:
+// Search history starts here
 
 // Function to fetch current weather and 5-day forecast
 function fetchWeatherAndForecast(city) {

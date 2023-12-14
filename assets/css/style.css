@@ -14,7 +14,7 @@ header {
 
 .fiveDayForecast {
     display: flex;
-    /* flex-wrap: nowrap; */
+    flex-wrap: nowrap;
     /* justify-content: space-between; */
     overflow-x: auto;
 }
