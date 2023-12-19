@@ -151,7 +151,7 @@ function displayFiveDayForecast(data) {
     fiveDayForecast.appendChild(cardsContainer);
 }
 
-// fetchFiveDayForecast();
+// fetchFiveDayForecast(); maybe delete this
 
 // Search history starts here
 // Function to fetch current weather and 5-day forecast
