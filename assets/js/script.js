@@ -124,6 +124,8 @@ function displayFiveDayForecast(data) {
 
         for (let i = 0; i < forecastSlice.length; i +=8) { 
             const forecast = forecastSlice[i];
+
+            const iconClass = getWeatherIconClass(forecast.weather[0].icon);
     
             // Timestamps 102-106
             const dateTimestamp = forecast.dt * 1000;
@@ -137,8 +139,6 @@ function displayFiveDayForecast(data) {
             const humidity = forecast.main.humidity;
     
             const temperatureFahrenheit = convertKelvinToFahrenheit(temperatureKelvin);
-    
-            const iconClass = getWeatherIconClass(forecast.weather[0].icon);
     
             const card = document.createElement('li');
             card.classList.add('card');
