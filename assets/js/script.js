@@ -68,20 +68,42 @@ function fetchWeatherContent(city) {
     });
 }
 
+// // function to update content on page for current weather
+// function updateWeatherData(data) {
+//     const cityName = data.name;
+//     const temperatureKelvin = data.main.temp;
+//     const temperatureFahrenheit = kelvinToFahrenheit(temperatureKelvin);
+//     const windSpeed = data.wind.speed;
+//     const humidity = data.main.humidity;
+
+//     currentWeatherDetails.innerHTML = `
+//     <h2>${cityName}</h2>
+//     <h5>Temperature: ${temperatureFahrenheit}°F</h5>
+//     <h5>Wind: ${windSpeed} m/s</h5>
+//     <h5>Humidity: ${humidity}%</h5>`;
+// }
+
 // function to update content on page for current weather
 function updateWeatherData(data) {
-    const cityName = data.name;
-    const temperatureKelvin = data.main.temp;
-    const temperatureFahrenheit = kelvinToFahrenheit(temperatureKelvin);
-    const windSpeed = data.wind.speed;
-    const humidity = data.main.humidity;
+    console.log('Data for updateWeatherData:', data);
+    
+    if (data.main) {
+        console.log('Temperature data:', data.main);
+        const temperatureKelvin = data.main.temp;
+        const temperatureFahrenheit = kelvinToFahrenheit(temperatureKelvin);
+        const windSpeed = data.wind.speed;
+        const humidity = data.main.humidity;
 
-    currentWeatherDetails.innerHTML = `
-    <h2>${cityName}</h2>
-    <h5>Temperature: ${temperatureFahrenheit}°F</h5>
-    <h5>Wind: ${windSpeed} m/s</h5>
-    <h5>Humidity: ${humidity}%</h5>`;
+        currentWeatherDetails.innerHTML = `
+            <h2>${data.name}</h2>
+            <h5>Temperature: ${temperatureFahrenheit}°F</h5>
+            <h5>Wind: ${windSpeed} m/s</h5>
+            <h5>Humidity: ${humidity}%</h5>`;
+    } else {
+        console.error('Main data not present in API response:', data);
+    }
 }
+
 
 // Function to fetch 5-day forecast data
 function fetchFiveDayForecast(city) {
@@ -100,7 +122,7 @@ function fetchFiveDayForecast(city) {
 }
 
 // function to update content on page for 5-day forecast
-function displayFiveDayForecast(data, city) {
+function displayFiveDayForecast(data) {
     const forecastList = data.list;
 
     fiveDayForecast.innerHTML = '';
@@ -180,6 +202,13 @@ function displaySearchHistory() {
         searchHistoryList.appendChild(listItem);
         });
 }
+
+// Event listener for search history items
+searchHistoryList.addEventListener('click', (event) => {
+    const clickedCity = event.target.textContent;
+    fiveDayForecast.style.display = 'block';
+    fetchWeatherAndForecast(clickedCity);
+});
 
 // call function to display search history on page load
 displaySearchHistory();
