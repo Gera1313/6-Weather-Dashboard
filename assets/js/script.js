@@ -68,27 +68,10 @@ function fetchWeatherContent(city) {
     });
 }
 
-// // function to update content on page for current weather
-// function updateWeatherData(data) {
-//     const cityName = data.name;
-//     const temperatureKelvin = data.main.temp;
-//     const temperatureFahrenheit = kelvinToFahrenheit(temperatureKelvin);
-//     const windSpeed = data.wind.speed;
-//     const humidity = data.main.humidity;
-
-//     currentWeatherDetails.innerHTML = `
-//     <h2>${cityName}</h2>
-//     <h5>Temperature: ${temperatureFahrenheit}°F</h5>
-//     <h5>Wind: ${windSpeed} m/s</h5>
-//     <h5>Humidity: ${humidity}%</h5>`;
-// }
-
 // function to update content on page for current weather
 function updateWeatherData(data) {
-    console.log('Data for updateWeatherData:', data);
     
     if (data.main) {
-        console.log('Temperature data:', data.main);
         const temperatureKelvin = data.main.temp;
         const temperatureFahrenheit = kelvinToFahrenheit(temperatureKelvin);
         const windSpeed = data.wind.speed;
