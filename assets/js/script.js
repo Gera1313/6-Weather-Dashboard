@@ -111,9 +111,11 @@ function displayFiveDayForecast(data) {
     const cardsContainer = document.createElement('ul');
     cardsContainer.classList.add('five-day-cards');
 
-    if (forecastList && forecastList.length > 0) {
-        for (let i = 0; i < forecastList.length; i +=8) { 
-            const forecast = forecastList[i];
+    const forecastSlice = forecastList.slice(1);
+
+    if (forecastSlice && forecastSlice.length > 0) {
+        for (let i = 0; i < forecastSlice.length; i +=8) { 
+            const forecast = forecastSlice[i];
     
             // Timestamps 102-106
             const dateTimestamp = forecast.dt * 1000;
