@@ -61,6 +61,7 @@ function fetchWeatherContent(city) {
     })
     .then(function (data) {
         updateWeatherData(data);
+        displayFiveDayForecast(data);
     })
     .catch(function (error) {
         console.error(error); 
@@ -99,7 +100,7 @@ function fetchFiveDayForecast(city) {
 }
 
 // function to update content on page for 5-day forecast
-function displayFiveDayForecast(data) {
+function displayFiveDayForecast(data, city) {
     const forecastList = data.list;
 
     fiveDayForecast.innerHTML = '';
@@ -111,9 +112,9 @@ function displayFiveDayForecast(data) {
     const cardsContainer = document.createElement('ul');
     cardsContainer.classList.add('five-day-cards');
 
-    const forecastSlice = forecastList.slice(1);
+    if (forecastList && forecastList.length > 0) {
+        const forecastSlice = forecastList.slice(1);
 
-    if (forecastSlice && forecastSlice.length > 0) {
         for (let i = 0; i < forecastSlice.length; i +=8) { 
             const forecast = forecastSlice[i];
     
@@ -152,8 +153,6 @@ function displayFiveDayForecast(data) {
 
     fiveDayForecast.appendChild(cardsContainer);
 }
-
-// fetchFiveDayForecast(); maybe delete this
 
 // Search history starts here
 // Function to fetch current weather and 5-day forecast
@@ -214,6 +213,8 @@ form.addEventListener('submit', (event) => {
         fetchWeatherAndForecast(city);
         addToSearchHistory(city);
         fetchFiveDayForecast(city);
+
+        cityInput.value = '';
     } 
 });
 
