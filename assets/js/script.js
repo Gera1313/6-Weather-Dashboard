@@ -71,14 +71,16 @@ function fetchWeatherContent(city) {
 // function to update content on page for current weather
 function updateWeatherData(data) {
     
-    if (data.main) {
+    if (data.main && data.weather && data.weather.length > 0) {
         const temperatureKelvin = data.main.temp;
         const temperatureFahrenheit = kelvinToFahrenheit(temperatureKelvin);
         const windSpeed = data.wind.speed;
         const humidity = data.main.humidity;
+        const iconClass = getWeatherIconClass(data.weather[0].icon);
 
         currentWeatherDetails.innerHTML = `
             <h2>${data.name}</h2>
+            <i class="${iconClass}"></i>
             <h5>Temperature: ${temperatureFahrenheit}°F</h5>
             <h5>Wind: ${windSpeed} m/s</h5>
             <h5>Humidity: ${humidity}%</h5>`;
@@ -230,11 +232,8 @@ form.addEventListener('submit', (event) => {
     } 
 });
 
-  
-
 // Guidance: https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
 
 // Few issues to fix: 
-// 1. The displayed dates. The current date is repeated in the first day of the 5-day weather forecast and it shouldn't because it shows tomorrow's weather info. The date should display the next day after the current date. 
 // 2. Need to add weather icons as well. 
 // 3. Need to syle it using CSS. 
