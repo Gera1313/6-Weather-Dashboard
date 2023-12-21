@@ -6,7 +6,14 @@ const fiveDayForecast = document.querySelector('.fiveDayForecast');
 const APIKey = "1f7ee33dc86217d48db8099bae79dad7";
 
 // Function to get Weather Icons class based on condition code
-function getWeatherIconClass(conditionCode) {
+function getWeatherIconClass(conditionCode, isDay) {
+    const baseURL = 'https://openweathermap.org/img/wn/';
+
+    switch (conditionCode) {
+        case '01d':
+        case '01n':
+            return baseURL + '01' + (isDay ? 'd' : 'n') + '.png';
+    }
 }
 
 // Event listener for form
