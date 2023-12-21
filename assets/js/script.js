@@ -110,7 +110,7 @@ function updateWeatherData(data) {
         const windSpeed = data.wind.speed;
         const humidity = data.main.humidity;
         const isDay = true;
-        const iconClass = getWeatherIconClass(data.weather[0].icon, isDay);
+        const iconURL = getWeatherIconClass(data.weather[0].icon, isDay);
 
         currentWeatherDetails.innerHTML = `
             <h2>${data.name}</h2>
