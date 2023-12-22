@@ -45,9 +45,7 @@ The following image shows the web application's appearance and functionality:
 ## Notes
 
 Few issues to fix: 
-1. The displayed dates. The current date is repeated in the first day of the 5-day weather forecast and it shouldn't because it shows tomorrow's weather info. The date should display the next day after the current date. 
-2. Need to add weather icons as well. 
-3. Need to syle it using CSS. 
+1. Need to syle it some more using CSS. 
 
 UPDATE 12/11/23: Embarking on the journey to address code issues, meticulously refactor the existing snippets, and enhance the overall aesthetics of both the codebase and the web application.
 
