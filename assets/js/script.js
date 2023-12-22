@@ -189,11 +189,10 @@ function displayFiveDayForecast(data) {
             card.classList.add('card');
             card.innerHTML = `
             <p>Date: ${formattedDate}</p>
-            <i class="${iconURL}"></i> 
+            <img src="${iconURL}" alt="Weather Icon"> 
             <p>Temperature: ${temperatureFahrenheit}°F</p>
             <p>Wind: ${windSpeed} m/s</p>
-            <p>Humidity: ${humidity}%</p>
-            <i class="${iconURL}"></i>`;
+            <p>Humidity: ${humidity}%</p>`;
     
             cardsContainer.appendChild(card);
     }
