@@ -161,59 +161,61 @@ function fetchFiveDayForecast(city) {
 
 // function to update content on page for 5-day forecast
 function displayFiveDayForecast(data) {
-  const forecastList = data.list;
-
-  fiveDayForecast.innerHTML = "";
-
-  function convertKelvinToFahrenheit(kelvin) {
-    return (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
-  }
-
-  const cardsContainer = document.createElement("ul");
-  cardsContainer.classList.add("five-day-cards");
-
-  if (forecastList && forecastList.length > 0) {
-    const forecastSlice = forecastList.slice(1);
-
-    for (let i = 0; i < forecastSlice.length; i += 8) {
-      const forecast = forecastSlice[i];
-
-      const isDay = true;
-      const iconURL = getWeatherIconClass(forecast.weather[0].icon, isDay);
-
-      // Timestamps 102-106
-      const dateTimestamp = forecast.dt * 1000;
-      const forecastDate = new Date(dateTimestamp);
-
-      const options = { weekday: "short", month: "short", day: "numeric" };
-      const formattedDate = forecastDate.toLocaleDateString(undefined, options);
-
-      const temperatureKelvin = forecast.main.temp;
-      const windSpeed = forecast.wind.speed;
-      const humidity = forecast.main.humidity;
-
-      const temperatureFahrenheit =
-        convertKelvinToFahrenheit(temperatureKelvin);
-
-      const card = document.createElement("li");
-      card.classList.add("card");
-      card.innerHTML = `
-            <p> ${formattedDate}</p>
-            <img src="${iconURL}" alt="Weather Icon"> 
-            <p>Temperature: ${temperatureFahrenheit}°F</p>
-            <p>Wind: ${windSpeed} m/s</p>
-            <p>Humidity: ${humidity}%</p>`;
-
-      cardsContainer.appendChild(card);
+    const forecastList = data.list;
+  
+    fiveDayForecast.innerHTML = "";
+  
+    function convertKelvinToFahrenheit(kelvin) {
+      return (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
     }
-  } else {
-    const noDataMessage = document.createElement("p");
-    noDataMessage.textContent = "No forecast data available";
-    fiveDayForecast.appendChild(noDataMessage);
+  
+    const cardsContainer = document.createElement("ul");
+    cardsContainer.classList.add("five-day-cards");
+  
+    if (forecastList && forecastList.length > 0) {
+      const uniqueDays = new Set(); // Use a Set to store unique days
+      const currentDate = new Date(); // Current date in local timezone
+  
+      forecastList.forEach((forecast) => {
+        const dateTimestamp = forecast.dt * 1000;
+        const forecastDate = new Date(dateTimestamp);
+        const formattedDate = forecastDate.toLocaleDateString("en-US", { weekday: "short" });
+  
+        // Check if the day is not the current day and is not already added
+        if (
+          currentDate.getDate() !== forecastDate.getDate() &&
+          !uniqueDays.has(formattedDate)
+        ) {
+          uniqueDays.add(formattedDate);
+  
+          const isDay = true;
+          const iconURL = getWeatherIconClass(forecast.weather[0].icon, isDay);
+          const temperatureKelvin = forecast.main.temp;
+          const windSpeed = forecast.wind.speed;
+          const humidity = forecast.main.humidity;
+          const temperatureFahrenheit = convertKelvinToFahrenheit(temperatureKelvin);
+  
+          const card = document.createElement("li");
+          card.classList.add("card");
+          card.innerHTML = `
+              <p>${formattedDate}</p>
+              <img src="${iconURL}" alt="Weather Icon"> 
+              <p>Temperature: ${temperatureFahrenheit}°F</p>
+              <p>Wind: ${windSpeed} m/s</p>
+              <p>Humidity: ${humidity}%</p>`;
+  
+          cardsContainer.appendChild(card);
+        }
+      });
+    } else {
+      // Display a message if no forecast data is available
+      const noDataMessage = document.createElement("p");
+      noDataMessage.textContent = "No forecast data available";
+      cardsContainer.appendChild(noDataMessage);
+    }
+  
+    fiveDayForecast.appendChild(cardsContainer);
   }
-
-  fiveDayForecast.appendChild(cardsContainer);
-}
 
 // Search history starts here
 // Function to fetch current weather and 5-day forecast
