@@ -109,7 +109,13 @@ function updateWeatherData(data) {
         const temperatureFahrenheit = kelvinToFahrenheit(temperatureKelvin);
         const windSpeed = data.wind.speed;
         const humidity = data.main.humidity;
-        const isDay = true;
+        const currentUTC = data.dt; // Current UTC time
+        const sunriseUTC = data.sys.sunrise;
+        const sunsetUTC = data.sys.sunset;
+
+        // Determine if it's day or night based on current time
+        const isDay = currentUTC > sunriseUTC && currentUTC < sunsetUTC;
+
         const iconURL = getWeatherIconClass(data.weather[0].icon, isDay);
 
         currentWeatherDetails.innerHTML = `
@@ -160,7 +166,11 @@ function displayFiveDayForecast(data) {
             const forecast = forecastSlice[i];
 
             const isDay = true;
-            const iconClass = getWeatherIconClass(forecast.weather[0].icon, isDay);
+            const iconURL = getWeatherIconClass(forecast.weather[0].icon, isDay);
+
+            console.log('isDay:', isDay);
+            console.log('iconURL:', iconURL);
+
     
             // Timestamps 102-106
             const dateTimestamp = forecast.dt * 1000;
@@ -179,11 +189,11 @@ function displayFiveDayForecast(data) {
             card.classList.add('card');
             card.innerHTML = `
             <p>Date: ${formattedDate}</p>
-            <i class="${iconClass}"></i>
+            <i class="${iconURL}"></i> 
             <p>Temperature: ${temperatureFahrenheit}°F</p>
             <p>Wind: ${windSpeed} m/s</p>
             <p>Humidity: ${humidity}%</p>
-            <i class="${iconClass}"></i>`;
+            <i class="${iconURL}"></i>`;
     
             cardsContainer.appendChild(card);
     }
