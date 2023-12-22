@@ -103,18 +103,17 @@ function fetchWeatherContent(city) {
 
 // function to update content on page for current weather
 function updateWeatherData(data) {
-    
     if (data.main && data.weather && data.weather.length > 0) {
         const temperatureKelvin = data.main.temp;
         const temperatureFahrenheit = kelvinToFahrenheit(temperatureKelvin);
         const windSpeed = data.wind.speed;
         const humidity = data.main.humidity;
-        const currentUTC = data.dt; // Current UTC time
-        const sunriseUTC = data.sys.sunrise;
-        const sunsetUTC = data.sys.sunset;
+        const currentTime = new Date(); // Current time in local timezone
+        const sunriseUTC = new Date(data.sys.sunrise * 1000); // Sunrise time in UTC
+        const sunsetUTC = new Date(data.sys.sunset * 1000);
 
         // Determine if it's day or night based on current time
-        const isDay = currentUTC > sunriseUTC && currentUTC < sunsetUTC;
+        const isDay = currentTime > sunriseUTC && currentTime < sunsetUTC;
 
         const iconURL = getWeatherIconClass(data.weather[0].icon, isDay);
 
@@ -167,10 +166,6 @@ function displayFiveDayForecast(data) {
 
             const isDay = true;
             const iconURL = getWeatherIconClass(forecast.weather[0].icon, isDay);
-
-            console.log('isDay:', isDay);
-            console.log('iconURL:', iconURL);
-
     
             // Timestamps 102-106
             const dateTimestamp = forecast.dt * 1000;
@@ -188,7 +183,7 @@ function displayFiveDayForecast(data) {
             const card = document.createElement('li');
             card.classList.add('card');
             card.innerHTML = `
-            <p>Date: ${formattedDate}</p>
+            <p> ${formattedDate}</p>
             <img src="${iconURL}" alt="Weather Icon"> 
             <p>Temperature: ${temperatureFahrenheit}°F</p>
             <p>Wind: ${windSpeed} m/s</p>
