@@ -8,6 +8,8 @@ header {
     text-align: center;
     padding: 5px;
     background-image: linear-gradient(to right, #c1b4ae, #92160c);
+    margin-bottom: 20px;
+    border-radius: 8px;
 }
 
 /* Styling the 5-Day Forecast Cards */
@@ -44,6 +46,7 @@ header {
     background-color: #f0f0f0;
     padding: 10px;
     margin-bottom: 20px;
+    border-radius: 8px;
 }
 
 .city-input {
@@ -64,7 +67,7 @@ header {
 /* Styles the Search History section */
 #searchHistory {
     background-color: #e0e0e0;
-    padding: 8px;
+    padding: 10px;
     border-radius: 8px;
     margin-bottom: 20px;
 }
