@@ -11,7 +11,6 @@ header {
 }
 
 /* Styling the 5-Day Cards */
-
 .fiveDayForecast {
     display: flex;
     display: none;
@@ -35,7 +34,6 @@ header {
 }
 
 /* style for the input and button elements */
-
 .input {
     background-color: #f0f0f0;
     padding: 10px;
@@ -58,10 +56,18 @@ header {
 }
 
 /* Styles the Search History section */
-
 #searchHistory {
     background-color: #e0e0e0;
     padding: 8px;
     border-radius: 8px;
     margin-bottom: 20px;
+}
+
+/* Current Weather section */
+.current-weather {
+    background-color: #c1b4ae;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    /* color: #fff; */
 }
