@@ -179,7 +179,14 @@ function displayFiveDayForecast(data) {
       forecastList.forEach((forecast) => {
         const dateTimestamp = forecast.dt * 1000;
         const forecastDate = new Date(dateTimestamp);
-        const formattedDate = forecastDate.toLocaleDateString("en-US", { weekday: "short" });
+        const formattedDate = forecastDate.toLocaleDateString("en-US", {
+          weekday: "short",
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+        });
+        
+
   
         // Check if the day is not the current day and is not already added
         if (
