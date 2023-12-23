@@ -288,7 +288,6 @@ form.addEventListener("submit", (event) => {
   }
 });
 
-// Guidance: https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys
-
 // Few issues to fix:
-// 3. Need to syle it using CSS.
+// 1. Need to syle it using CSS.
+// 2. Date needs to be in 5 day cards, not just the day. 

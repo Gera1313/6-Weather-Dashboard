@@ -34,18 +34,11 @@ header {
     text-align: center;
 }
 
-/* Common styles for the weather icons */
+/* style for the input and button elements */
 
-.wi {
-    font-size: 24px;
-}
-
-.wi-day-sunny {
-    content: "\f00d";
-    color: #ffd700;
-}
-
-.wi-day-cloudy {
-    content: "\f002";
-    color: #A0A0A0;
+.input {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
