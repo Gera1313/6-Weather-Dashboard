@@ -1,81 +1,81 @@
 body {
-    margin: 20px;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 20px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
-    color: rgb(255, 255, 255); 
-    text-align: center;
-    padding: 5px;
-    background-image: linear-gradient(to right, #c1b4ae, #92160c);
-    margin-bottom: 20px;
-    border-radius: 8px;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  padding: 5px;
+  background-image: linear-gradient(to right, #c1b4ae, #92160c);
+  margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 /* Styling the 5-Day Forecast Cards */
 .fiveDayForecast {
-    display: flex;
-    display: none;
-    flex-wrap: nowrap;
-    justify-content: space-between;
-    overflow-x: auto;
-    background-color: #f5f5f5;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+  display: flex;
+  display: none;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  overflow-x: auto;
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 .five-day-cards {
-    list-style: none;
-    padding: 0;
-    display: flex;
+  list-style: none;
+  padding: 0;
+  display: flex;
 }
 
 .card {
-    flex: 0 0 calc(20% -10px);
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex: 0 0 calc(20% -10px);
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* style for the input and button elements */
 .input {
-    background-color: #f0f0f0;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 8px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 .city-input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 .search-btn {
-    background-color: #4caf50;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+  background-color: #4caf50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* Styles the Search History section */
 #searchHistory {
-    background-color: #e0e0e0;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+  background-color: #e0e0e0;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }
 
 /* Current Weather section */
 .current-weather {
-    background-color: #c1b4ae;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+  background-color: #c1b4ae;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
 }

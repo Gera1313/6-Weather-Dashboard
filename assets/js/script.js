@@ -63,7 +63,7 @@ form.addEventListener("submit", (event) => {
   fiveDayForecast.style.display = "block";
 
   fetchWeatherContent(city);
-  fetchFiveDayForecast(city); // added this
+  fetchFiveDayForecast(city);
 });
 
 // Formula to convert from Kelvin to Fahrenheit
@@ -161,68 +161,67 @@ function fetchFiveDayForecast(city) {
 
 // function to update content on page for 5-day forecast
 function displayFiveDayForecast(data) {
-    const forecastList = data.list;
-  
-    fiveDayForecast.innerHTML = "";
-  
-    function convertKelvinToFahrenheit(kelvin) {
-      return (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
-    }
-  
-    const cardsContainer = document.createElement("ul");
-    cardsContainer.classList.add("five-day-cards");
-  
-    if (forecastList && forecastList.length > 0) {
-      const uniqueDays = new Set(); // Use a Set to store unique days
-      const currentDate = new Date(); // Current date in local timezone
-  
-      forecastList.forEach((forecast) => {
-        const dateTimestamp = forecast.dt * 1000;
-        const forecastDate = new Date(dateTimestamp);
-        const formattedDate = forecastDate.toLocaleDateString("en-US", {
-          weekday: "short",
-          year: "numeric",
-          month: "short",
-          day: "numeric",
-        });
-        
+  const forecastList = data.list;
 
-  
-        // Check if the day is not the current day and is not already added
-        if (
-          currentDate.getDate() !== forecastDate.getDate() &&
-          !uniqueDays.has(formattedDate)
-        ) {
-          uniqueDays.add(formattedDate);
-  
-          const isDay = true;
-          const iconURL = getWeatherIconClass(forecast.weather[0].icon, isDay);
-          const temperatureKelvin = forecast.main.temp;
-          const windSpeed = forecast.wind.speed;
-          const humidity = forecast.main.humidity;
-          const temperatureFahrenheit = convertKelvinToFahrenheit(temperatureKelvin);
-  
-          const card = document.createElement("li");
-          card.classList.add("card");
-          card.innerHTML = `
+  fiveDayForecast.innerHTML = "";
+
+  function convertKelvinToFahrenheit(kelvin) {
+    return (((kelvin - 273.15) * 9) / 5 + 32).toFixed(2);
+  }
+
+  const cardsContainer = document.createElement("ul");
+  cardsContainer.classList.add("five-day-cards");
+
+  if (forecastList && forecastList.length > 0) {
+    const uniqueDays = new Set(); // Use a Set to store unique days
+    const currentDate = new Date(); // Current date in local timezone
+
+    forecastList.forEach((forecast) => {
+      const dateTimestamp = forecast.dt * 1000;
+      const forecastDate = new Date(dateTimestamp);
+      const formattedDate = forecastDate.toLocaleDateString("en-US", {
+        weekday: "short",
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+      });
+
+      // Check if the day is not the current day and is not already added
+      if (
+        currentDate.getDate() !== forecastDate.getDate() &&
+        !uniqueDays.has(formattedDate)
+      ) {
+        uniqueDays.add(formattedDate);
+
+        const isDay = true;
+        const iconURL = getWeatherIconClass(forecast.weather[0].icon, isDay);
+        const temperatureKelvin = forecast.main.temp;
+        const windSpeed = forecast.wind.speed;
+        const humidity = forecast.main.humidity;
+        const temperatureFahrenheit =
+          convertKelvinToFahrenheit(temperatureKelvin);
+
+        const card = document.createElement("li");
+        card.classList.add("card");
+        card.innerHTML = `
               <p>${formattedDate}</p>
               <img src="${iconURL}" alt="Weather Icon"> 
               <p>Temperature: ${temperatureFahrenheit}°F</p>
               <p>Wind: ${windSpeed} m/s</p>
               <p>Humidity: ${humidity}%</p>`;
-  
-          cardsContainer.appendChild(card);
-        }
-      });
-    } else {
-      // Display a message if no forecast data is available
-      const noDataMessage = document.createElement("p");
-      noDataMessage.textContent = "No forecast data available";
-      cardsContainer.appendChild(noDataMessage);
-    }
-  
-    fiveDayForecast.appendChild(cardsContainer);
+
+        cardsContainer.appendChild(card);
+      }
+    });
+  } else {
+    // Display a message if no forecast data is available
+    const noDataMessage = document.createElement("p");
+    noDataMessage.textContent = "No forecast data available";
+    cardsContainer.appendChild(noDataMessage);
   }
+
+  fiveDayForecast.appendChild(cardsContainer);
+}
 
 // Search history starts here
 // Function to fetch current weather and 5-day forecast
@@ -294,7 +293,3 @@ form.addEventListener("submit", (event) => {
     cityInput.value = "";
   }
 });
-
-// Few issues to fix:
-// 1. Need to syle it using CSS.
-// 2. Date needs to be in 5 day cards, not just the day. 
