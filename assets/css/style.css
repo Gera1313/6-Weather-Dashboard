@@ -10,13 +10,17 @@ header {
     background-image: linear-gradient(to right, #c1b4ae, #92160c);
 }
 
-/* Styling the 5-Day Cards */
+/* Styling the 5-Day Forecast Cards */
 .fiveDayForecast {
     display: flex;
     display: none;
     flex-wrap: nowrap;
     justify-content: space-between;
     overflow-x: auto;
+    background-color: #f5f5f5;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 .five-day-cards {
@@ -31,6 +35,8 @@ header {
     padding: 10px;
     margin: 10px;
     text-align: center;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* style for the input and button elements */
