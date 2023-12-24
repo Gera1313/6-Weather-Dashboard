@@ -44,10 +44,7 @@ The following image shows the web application's appearance and functionality:
 
 ## Notes
 
-Few issues to fix: 
-1. Need to syle it some more using CSS. 
-
-UPDATE 12/11/23: Embarking on the journey to address code issues, meticulously refactor the existing snippets, and enhance the overall aesthetics of both the codebase and the web application.
+N/A
 
 ## Links
 
