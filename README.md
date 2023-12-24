@@ -58,9 +58,7 @@ For more information on how to work with the OpenWeather API, refer to the [Full
 
 The following sources helped me in developing this project: 
 
-[How to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys) 
-
-Would like to thank my classmates who have done this challenge already AND my work colleagues who are sofware engineers for the guidance. 
+[How to use API keys](https://coding-boot-camp.github.io/full-stack/apis/how-to-use-api-keys)  
 
 ## License
 
