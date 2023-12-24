@@ -76,7 +76,7 @@ function displayCurrentDate() {
   const currentDateElement = document.getElementById("currentDate");
   const currentDate = new Date();
 
-  // Format the date (you can adjust the format as needed)
+  // Format the date
   const options = {
     weekday: "long",
     year: "numeric",
