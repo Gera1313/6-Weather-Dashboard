@@ -36,7 +36,7 @@ The following image shows the web application's appearance and functionality:
 
 ![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions.](./assets/images/home.png)
 
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions.](./assets/images/home2.png)
+![The weather app includes a five-day forecast and current weather conditions.](./assets/images/home2.png)
 
 ## Installation
 
